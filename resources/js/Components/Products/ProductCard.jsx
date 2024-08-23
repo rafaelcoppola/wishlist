@@ -2,6 +2,7 @@ import AddToCartButton from "./AddToCartButton";
 import ProductDescription from "./ProductDescription";
 import ProductImage from "./ProductImage";
 import React from "react";
+
 export default function ProductCard(props) {
     const { imgSrc, product } = props;
     const { image, name, description, id } = product;
