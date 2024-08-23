@@ -17,18 +17,20 @@ export default function Header(props) {
                             >
                                 Login
                             </Link>
+
                             :
                             <>
                                 <Logout />
 
-                                <Link
-                                    href={route('wishlist')}
-                                    className="flex items-center px-3 py-2 dark:text-white dark:hover:text-white/80 border-solid border-2 border-stone-500 rounded-lg"
-                                >
-                                    <FaShoppingCart className="mr-2" /> Carrinho
-                                </Link>
+
                             </>
                         }
+                        <Link
+                            href={route('wishlist')}
+                            className="flex items-center px-3 py-2 dark:text-white dark:hover:text-white/80 border-solid border-2 border-stone-500 rounded-lg"
+                        >
+                            <FaShoppingCart className="mr-2" /> Carrinho
+                        </Link>
                     </div>
                 </header>
             </div>

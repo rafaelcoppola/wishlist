@@ -6,9 +6,9 @@ use Inertia\Response;
 use Inertia\Inertia;
 use App\Models\product;
 
-class Main extends Controller
+class Products extends Controller
 {
-    public function show(): Response
+    public function index(): Response
     {
         $tplData = [];
 
@@ -17,6 +17,6 @@ class Main extends Controller
         $tplData['products'] = $products;
         $tplData['assetImage'] = asset('assets/images/');
         
-        return Inertia::render('Main', $tplData);
+        return Inertia::render('Products', $tplData);
     }
 }

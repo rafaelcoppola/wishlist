@@ -1,5 +1,6 @@
 export default function ProductImage(props) {
     const {src, imgFile} = props;
+    
     return (
         <div
             id="screenshot-container"
