@@ -1,0 +1,9 @@
+.hide-cart {
+    transform: translate(110%, 0);
+    transition: all 400ms ease;
+}
+
+.show-cart {
+    transform: translate(0, 0);
+    transition: all 400ms ease;
+}

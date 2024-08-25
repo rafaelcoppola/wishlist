@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
 import fetchProducts from '@/api/Product/FetchProducts';
-import Header from '@/Components/Header';
 import Loading from '@/Components/Loading';
 import ProductCard from '@/Components/Products/ProductCard';
-import { useEffect, useState } from 'react';
+import Container from '@/Components/Products/Container';
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -13,37 +13,30 @@ export default function Products() {
         fetchProducts().then((response) => {
             setProducts(response.products)
             setAssetImage(response.assetImage)
-            setLoading(true);
+            setLoading(false);
         });
 
     }, []);
 
-    return (
-        <>
-
-            <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-                <Header />
-                <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-                    <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                        <Loading />
-                        <div className="mt-6">
-
-                            <div className="grid gap-6 lg:grid-cols-3 lg:gap-8 mb-4">
-                                {
-                                    products.map(product =>
-                                        <ProductCard
-                                            key={product.id}
-                                            product={product}
-                                            imgSrc={assetImage}
-                                        />
-                                    )
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+    if (loading) {
+        return (
+            <div className="w-full flex justify-center h-[100vh] items-center bg-black">
+                <Loading />
             </div>
-        </>
+        );
+    }
+
+    return (
+        <Container>
+            {
+                products.map(product =>
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                        imgSrc={assetImage}
+                    />
+                )
+            }
+        </Container>
     );
 }

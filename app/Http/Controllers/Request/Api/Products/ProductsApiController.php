@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 
 class ProductsApiController extends Controller
 {
-    public function index(): JsonResponse
+    public function get(): JsonResponse
     {
         $products = product::all();
         $assetImage = asset('assets/images/');

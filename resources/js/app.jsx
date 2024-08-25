@@ -3,12 +3,18 @@ import '../css/app.css';
 
 import ReactDOM from 'react-dom/client';
 import Products from './Pages/Products';
+import Header from '@/Components/Header/Header';
+
+import Provider from './Context/Provider';
+import Cart from './Components/Cart/Cart';
 
 const App = () => {
     return (
-        <div>
-            <Products/>
-        </div>
+        <Provider>
+            <Header />
+            <Products />
+            <Cart />
+        </Provider>
     );
 };
 
