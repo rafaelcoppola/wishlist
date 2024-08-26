@@ -29,7 +29,7 @@ export default function CartItem({ data }) {
             {
                 cartProducts.map((product) =>
                     <div className="flex items-start border-b-[1px] border-b-[#ddd] pb-5 mb-5 relative" key={product.id}>
-                        <input type="hidden" name={`product_id[${product.id}][]`} value={product.id} />
+                        <input type="hidden" name={`product_id[${product.id}]`} value={product.id} />
                         <img src={product.img} alt="imagem" className="w-[70px]" />
 
                         <div className="py-0 pl-3 pr-9 flex flex-row w-full justify-around items-center">

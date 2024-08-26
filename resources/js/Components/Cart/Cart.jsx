@@ -10,18 +10,21 @@ export default function Cart() {
     async function handleCartSave(event) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
-        var data = {
-            product_id: '',
-            qtd: ''
-        };
+        var postData = [];
 
         cartProducts.map((product) => {
-            data.product_id = formData.getAll(`product_id[${product.id}][]`);
+            let productData = {
+                product_id: '',
+                quantity: formData.get(`quantity[${product.id}]`)
+            }
+
+            postData.push(productData)
         });
-        console.log(data)
+        
+        console.log(postData)
 
         await api.post(route('cart.save'), {
-            data: data
+            data: postData
         })
 
     }
