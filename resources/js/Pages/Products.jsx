@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react';
-import fetchProducts from '@/api/Product/FetchProducts';
+import { useContext, useEffect, useState } from 'react';
 import Loading from '@/Components/Loading';
 import ProductCard from '@/Components/Products/ProductCard';
 import Container from '@/Components/Products/Container';
+import AppContext from '@/Context/AppContext';
+import { Alert } from '@/Components/Alert/Alert';
+import { api } from '@/api/api';
 
 export default function Products() {
+    const { showAlerts } = useContext(AppContext);
     const [products, setProducts] = useState([]);
     const [assetImage, setAssetImage] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchProducts().then((response) => {
-            setProducts(response.products)
-            setAssetImage(response.assetImage)
+        api.get(route('products')).then((response) => {
+            setProducts(response.data.products)
+            setAssetImage(response.data.assetImage)
             setLoading(false);
         });
 
@@ -25,18 +28,33 @@ export default function Products() {
             </div>
         );
     }
-
+    
     return (
-        <Container>
+        <div>
             {
-                products.map(product =>
-                    <ProductCard
-                        key={product.id}
-                        product={product}
-                        imgSrc={assetImage}
-                    />
-                )
+                showAlerts &&
+
+                <Alert />
             }
-        </Container>
+            <Container>
+                {
+                    products.length > 0 ?
+                        products.map(product =>
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                imgSrc={assetImage}
+                            />
+                        )
+                        :
+                        <div className='flex justify-center flex-wrap'>
+                            <span className='flex items-center px-3 py-2 mr-2 text-white'>
+                                Por favor rode o php artisan db:seed
+                            </span>
+                        </div>
+                }
+            </Container>
+        </div>
+
     );
 }

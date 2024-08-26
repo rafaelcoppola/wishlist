@@ -5,13 +5,19 @@ export default function Provider({ children }) {
     const [cartProducts, setCartProducts] = useState([]);
     const [isCartVisible, setIsCartVisible] = useState(false);
     const [productId, setProductId] = useState('');
+    const [showAlerts, setShowAlerts] = useState(true);
+    const [contentAlerts, setContentAlerts] = useState([]);
 
     const data = {
         cartProducts,
         setCartProducts,
         isCartVisible,
         setIsCartVisible,
-        setProductId
+        setProductId,
+        showAlerts,
+        setShowAlerts,
+        contentAlerts,
+        setContentAlerts
     }
 
     return (

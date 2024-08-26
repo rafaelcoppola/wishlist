@@ -12,12 +12,6 @@ export default function Header() {
     return (
         <header className="bg-zinc-900 fixed w-full z-[1] p-4">
             <div className="flex flex-1 justify-end items-center relative">
-                <a
-                    href={route('login')}
-                    className="flex items-center px-3 py-2 mr-2 text-white hover:text-white/80 border-solid border-2 border-stone-500 rounded-lg"
-                >
-                    Login
-                </a>
                 <button
                     className="flex items-center px-3 py-2 mr-2 text-white hover:text-white/80 border-solid border-2 border-stone-500 rounded-lg size-11"
                     onClick={handleOpenCart}
